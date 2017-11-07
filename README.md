@@ -1,1 +1,1 @@
-# HexGame
+# HexGame.HexGame

@@ -1,3 +1,5 @@
+package HexGame;
+
 /**
  * Created by wangkun on 7/11/2017.
  */

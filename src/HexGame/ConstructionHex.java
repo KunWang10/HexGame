@@ -1,3 +1,5 @@
+package HexGame;
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -5,7 +7,7 @@ import java.util.Set;
 /**
  * Created by Kun on 2017/11/07.
  * <p>
- * Construct HexGame from a string describing game state.
+ * Construct HexGame.HexGame from a string describing game state.
  * The initial state of the game, described as a string according to the assignment specification.
  * To get the right construction of hexgame, it should get the right nooks,crannies,pieces
  */
@@ -60,8 +62,8 @@ public class ConstructionHex {
         String[] s = {"A", "B", "C", "D", "E", "F"};
 
 
-//        Node[] id = new Node[217];
-//        Node.create(id);
+//        HexGame.Node[] id = new HexGame.Node[217];
+//        HexGame.Node.create(id);
 
         Random r = new Random();
         boolean flaga = true;

@@ -1,3 +1,5 @@
+package HexGame;
+
 import java.util.ArrayList;
 
 /**
@@ -163,7 +165,7 @@ public class Node {
         return Math.max(drow, dcolumn);
     }
 
-    //getting the next Node by the giving direction
+    //getting the next HexGame.Node by the giving direction
     public static int next(int from, int drc) {
         Node[] id = new Node[217];
         Node.create(id);
@@ -536,6 +538,8 @@ public class Node {
     }
 
     //creating exactly id of the node
+    // TODO: 7/11/2017 Not elegant, optimise this.
+
     public static void create(Node[] id) {
         id[169] = new Node(169, 1, 1);
         id[170] = new Node(170, 1, 2);

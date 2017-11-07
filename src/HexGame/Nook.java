@@ -1,3 +1,5 @@
+package HexGame;
+
 /**
  * Created by kun on 2017/11/07.
  */
@@ -77,6 +79,7 @@ public class Nook {
     }
 
     //judging whether exactly three nooks in the each of the six triangles
+    // TODO: 7/11/2017 Not elegant, optimise this.
     public static int legalplus(int id) {
 
         if (id == 92 || id == 93 || id == 94 || id == 95 || id == 96 ||

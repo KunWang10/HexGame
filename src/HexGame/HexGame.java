@@ -1,3 +1,5 @@
+package HexGame;
+
 import java.util.ArrayList;
 
 /**
@@ -7,7 +9,7 @@ public class HexGame {
 
 
     /**
-     * Construct HexGame from a string describing game state.
+     * Construct HexGame.HexGame from a string describing game state.
      *
      * @param game The initial state of the game, described as a string according to the assignment specification.
      */
@@ -21,7 +23,7 @@ public class HexGame {
     }
 
     /**
-     * Construct HexGame with a random game state that complies with the assignment specification.
+     * Construct HexGame.HexGame with a random game state that complies with the assignment specification.
      */
     public HexGame() {
         /* FIXME */
@@ -157,7 +159,7 @@ public class HexGame {
         }
         for (int i = 0; i < num; i++) {
             for (int j = i + 1; j < num; j++) {
-                if (p[i] == p[j]) {                          //double pieces in same Node
+                if (p[i] == p[j]) {                          //double pieces in same HexGame.Node
                     return false;
                 }
             }
@@ -242,12 +244,12 @@ public class HexGame {
      * @param game  A string describing the game state, encoded according to the assignment specification.
      * @param start The point from which the path must start
      * @param goal  The point at which the path must end
-     * @return An array of integers reflecting a minimal path from start to goal, each integer reflecting a Node on the board, starting with the start, and ending with the goal.
+     * @return An array of integers reflecting a minimal path from start to goal, each integer reflecting a HexGame.Node on the board, starting with the start, and ending with the goal.
      */
     public static int[] minimalPath(String game, int start, int goal) {
         /* FIXME */
 
-        //Because I changed Node.move, the string to set pieces will influnce the judgement,
+        //Because I changed HexGame.Node.move, the string to set pieces will influnce the judgement,
         //so we cut the string "game"
         //this method is only for single pieces game now.
         game = game.substring(0, 90);
