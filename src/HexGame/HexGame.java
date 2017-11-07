@@ -218,7 +218,7 @@ public class HexGame {
     public static boolean legitimateStep(String game, int from, int to) {
         /* FIXME */
 
-        if (!Node.line(from, to) || from == to) {
+        if (!Node.isLine(from, to) || from == to) {
             return false;
         }
 
@@ -248,6 +248,7 @@ public class HexGame {
      */
     public static int[] minimalPath(String game, int start, int goal) {
         /* FIXME */
+        // TODO: 7/11/2017 This can be optimised (BFS)
 
         //Because I changed HexGame.Node.move, the string to set pieces will influnce the judgement,
         //so we cut the string "game"
@@ -258,8 +259,8 @@ public class HexGame {
         ArrayList<Point> zero = new ArrayList<Point>();
         Point Ancestry = new Point(start, null);
         zero.add(Ancestry);
-        ArrayList<Point> allpoints = new ArrayList<Point>();
-        allpoints.add(Ancestry);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(Ancestry);
         Path.add(zero);
 
 
@@ -278,22 +279,22 @@ public class HexGame {
             Path.add(sons);
             //this is the jth start-point in list i
             for (int j = 0; j < Path.get(i).size(); j++) {
-                int parentvalue = Path.get(i).get(j).getValue();
+                int parentValue = Path.get(i).get(j).getValue();
                 for (int k = 1; k < 7; k++) {
-                    int childrenvalue = Node.move(game, parentvalue, k);
+                    int childrenValue = Node.move(game, parentValue, k);
                     int flag = 0;
-                    for (int l = 0; l < allpoints.size(); l++) {
-                        if (allpoints.get(l).getValue() == childrenvalue) {
+                    for (int l = 0; l < allPoints.size(); l++) {
+                        if (allPoints.get(l).getValue() == childrenValue) {
                             flag = 1;
                         }
                     }
                     //if the childrenvalue is a new point, add new point to Path.get(i+1) and allpoints
                     if (flag == 0) {
-                        Point child = new Point(childrenvalue, Path.get(i).get(j));
+                        Point child = new Point(childrenValue, Path.get(i).get(j));
                         sons.add(child);
-                        allpoints.add(child);
+                        allPoints.add(child);
                     }
-                    if (childrenvalue == goal) {
+                    if (childrenValue == goal) {
                         int length = Path.size();
                         int size = Path.get(i + 1).size();
                         int[] recording = new int[length];
@@ -320,7 +321,6 @@ public class HexGame {
      * @return A string that reflects the game state, encoded according to the assignment specification.
      */
     public String toString() {
-        /* FIXME */
         return this.game;
     }
 

@@ -46,13 +46,13 @@ public class Node {
     }
 
 
-    public static boolean bj(int id) {
+    public static boolean isBoundary(int id) {
         return (id >= 169 && id <= 216);
     }
 
 
-    //judging whether the step is in a line
-    public static boolean line(int from, int to) {
+    //judging whether the step is in a isLine
+    public static boolean isLine(int from, int to) {
         Node[] id = new Node[217];
         Node.create(id);
         int rf = id[from].getRow();
@@ -60,11 +60,7 @@ public class Node {
         int cf = id[from].getColumn();
         int ct = id[to].getColumn();
 
-        if (rf == rt || cf == ct || rf - rt == cf - ct) {
-            return true;
-        } else {
-            return false;
-        }
+        return rf == rt || cf == ct || rf - rt == cf - ct;
     }
 
     public static int getId(int row, int column) {
@@ -81,7 +77,7 @@ public class Node {
     //defining the direction of the step
     public static int direction(int from, int to) {
 
-        if (!line(from, to)) {
+        if (!isLine(from, to)) {
             return -1;
         }
         Node[] id = new Node[217];
@@ -155,7 +151,7 @@ public class Node {
 
     //computing the distance of a step
     public static int distance(int from, int to) {
-        if (!line(from, to)) {
+        if (!isLine(from, to)) {
             return -1;
         }
         Node[] id = new Node[217];
@@ -323,7 +319,7 @@ public class Node {
     }
 
     // judging whether is a angle or not by giving the argument id
-    public static boolean ang(int id) {
+    public static boolean isAngle(int id) {
         return (id == 169 || id == 177 || id == 185 || id == 193 || id == 201 || id == 209);
     }
 
@@ -340,12 +336,12 @@ public class Node {
     }
 
 
-    //This method is dealing with how much moves the piece move
+    //This method is dealing with how much moves the piece can move
     public static int move(String game, int from, int drc) {
         int move = Node.next(from, drc);
         int record = from;
         //start from an angle
-        if (Node.ang(from)) {
+        if (Node.isAngle(from)) {
             if (!angout(from, drc)) {
                 return from;
             }
@@ -355,7 +351,7 @@ public class Node {
             if (Node.piece(game, move)) {
                 return record;
             }
-            if (Node.bj(move)) {
+            if (Node.isBoundary(move)) {
                 if (Node.c(game, move)) {
                     return move;
                 }
@@ -376,7 +372,7 @@ public class Node {
                     if (Node.piece(game, move)) {
                         return record;
                     }
-                    if (Node.ang(move)) {
+                    if (Node.isAngle(move)) {
                         return move;
                     }
                 } while (true);
@@ -390,9 +386,9 @@ public class Node {
             if (Node.piece(game, move)) {
                 return record;
             }
-            if (Node.bj(move)) {
+            if (Node.isBoundary(move)) {
                 do {
-                    if (Node.ang(move)) {
+                    if (Node.isAngle(move)) {
                         return move;
                     }
                     record = move;
@@ -408,7 +404,7 @@ public class Node {
                 if (Node.piece(game, move)) {
                     return record;
                 }
-                if (Node.bj(move)) {
+                if (Node.isBoundary(move)) {
                     return move;
                 }
                 if ((Nook.nk(game, move)) && !Nook.out(Node.getDrc(game, move), drc)) {
@@ -420,17 +416,17 @@ public class Node {
             } while (true);
 
         }
-        //start from a sidepoint
-        if (Node.bj(from)) {
+        //start from a side-point
+        if (Node.isBoundary(from)) {
             if (!Node.sideout(from, drc)) {
                 return from;
             }
             if (Node.piece(game, move)) {
                 return record;
             }
-            if (Node.bj(move)) {
+            if (Node.isBoundary(move)) {
                 do {
-                    if (Node.c(game, move) || Node.ang(move)) {
+                    if (Node.c(game, move) || Node.isAngle(move)) {
                         return move;
                     }
                     record = move;
@@ -446,13 +442,13 @@ public class Node {
                 if (Node.piece(game, move)) {
                     return record;
                 }
-                if (Node.bj(move)) {
+                if (Node.isBoundary(move)) {
                     return move;
                 }
                 if (Node.c(game, move)) {
                     return move;
                 }
-                if (Node.ang(move)) {
+                if (Node.isAngle(move)) {
                     return move;
                 }
                 if ((Nook.nk(game, move)) && !Nook.out(Node.getDrc(game, move), drc)) {
@@ -475,13 +471,13 @@ public class Node {
                     if (Node.piece(game, move)) {
                         return record;
                     }
-                    if (Node.bj(move)) {
+                    if (Node.isBoundary(move)) {
                         return move;
                     }
                     if (Node.c(game, move)) {
                         return move;
                     }
-                    if (Node.ang(move)) {
+                    if (Node.isAngle(move)) {
                         return move;
                     }
                     if ((Nook.nk(game, move)) && !Nook.out(Node.getDrc(game, move), drc)) {
@@ -496,13 +492,13 @@ public class Node {
             if (Node.piece(game, move)) {
                 return record;
             }
-            if (Node.bj(move)) {
+            if (Node.isBoundary(move)) {
                 return move;
             }
             if (Node.c(game, move)) {
                 return move;
             }
-            if (Node.ang(move)) {
+            if (Node.isAngle(move)) {
                 return move;
             }
             if ((Nook.nk(game, move)) && !Nook.out(Node.getDrc(game, move), drc)) {
@@ -517,13 +513,13 @@ public class Node {
                 if (Node.piece(game, move)) {
                     return record;
                 }
-                if (Node.bj(move)) {
+                if (Node.isBoundary(move)) {
                     return move;
                 }
                 if (Node.c(game, move)) {
                     return move;
                 }
-                if (Node.ang(move)) {
+                if (Node.isAngle(move)) {
                     return move;
                 }
                 if ((Nook.nk(game, move)) && !Nook.out(Node.getDrc(game, move), drc)) {
