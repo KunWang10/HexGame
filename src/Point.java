@@ -1,6 +1,7 @@
 /**
  * Created by wangkun on 7/11/2017.
  */
+// TODO: 7/11/2017 optimise functions and names
 public class Point {
 
     private int value;
